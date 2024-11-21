@@ -1,3 +1,11 @@
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+
 **Available on:** [https://llm-system-requirements.streamlit.app](https://llm-system-requirements.streamlit.app)
 
 # LLM System Requirements Calculator
@@ -164,3 +172,17 @@ Calculating the exact memory requirements for running an LLM can be difficult, d
 [4] [https://awsdocs-neuron.readthedocs-hosted.com/en/latest/libraries/neuronx-distributed/activation_memory_reduction.html](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/libraries/neuronx-distributed/activation_memory_reduction.html)
 
 [5] [https://www.oreilly.com/library/view/generative-ai-on/9781098159214/ch04.html](https://www.oreilly.com/library/view/generative-ai-on/9781098159214/ch04.html)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
+[contributors-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
+[forks-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/network/members
+[stars-shield]: https://img.shields.io/github/stars/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
+[stars-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/stargazers
+[issues-shield]: https://img.shields.io/github/issues/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
+[issues-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/issues
+[license-shield]: https://img.shields.io/github/license/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
+[license-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/blob/main/LICENSE
