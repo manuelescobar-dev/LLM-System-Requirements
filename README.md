@@ -11,6 +11,10 @@
 <br />
 <div align="center">
 
+  <a href="https://github.com/manuelescobar-dev/LLM-Tools.git">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
   <h3 align="center">LLM Tools</h3>
   <p>Useful tools for LLM development!</p>
 
