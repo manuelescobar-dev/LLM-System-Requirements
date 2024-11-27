@@ -1,3 +1,5 @@
+<a id="readme-top"></a>
+
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -5,163 +7,125 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-**Available on:** [https://llm-system-requirements.streamlit.app](https://llm-system-requirements.streamlit.app)
+  <h3 align="center">LLM Tools</h3>
+  <p>Useful tools for LLM development!</p>
 
-# LLM System Requirements Calculator
-Welcome to the LLM System Requirements Calculator, an open-source tool designed to help estimate the system requirements for running Large Language Models (LLMs).
+  <p>
+    Available on <a href="https://llm-system-requirements.streamlit.app"><img src="https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white" alt="Streamlit"></a>
+  </p>
+  <p><a href="https://llm-system-requirements.streamlit.app">
+    https://llm-system-requirements.streamlit.app</a>
+  </p>
+</div>
 
-The LLM System Requirements Calculator aims to address this challenge by providing a user-friendly interface for estimating the memory resources needed to run LLMs for both inference and training tasks.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#memory-requirements-calculator">Memory Requirements Calculator</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">Getting Started</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-All the initial formulas and explanations can be found it the following article but these may change as the tool evolves:
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-[**Memory Requirements for LLM Training and Inference**](https://medium.com/@manuelescobar-dev/memory-requirements-for-llm-training-and-inference-97e4ab08091b)
+The LLM Tools is an open-source project designed to provide essential tools for developing and running large language models (LLMs).
 
----
+* **Memory Requirements Calculator:** Estimates the memory needed to run or train LLMs based on factors like model size, precision, batch size, and sequence length.
 
-**Disclaimer**: The LLM System Requirements Calculator is a tool for estimating memory requirements for LLMs and the only real way of estimating the exact memory is trying things out. The tool is provided as-is, without any warranties or guarantees.
+**Formerly Known As:** LLM System Requirements Calculator
 
----
-# Memory Requirements for LLM Training and Inference
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-LLMs are characterized by being very computationally demanding, having billions of parameters and being trained on terabytes of data. This has been possible due to the latest advancements in computational power of the last decade and with new optimization techniques and architectures. Despite these advancements, LLMs are still far from being generally accessible due to computational limitations and proprietary models. For example, training GPT-4 is estimated to cost around 100 million dollars.
+<!-- MEMORY REQUIREMENTS CALCULATOR -->
+## Memory Requirements Calculator
 
-However, thanks to open-source models like Llama 3 and others, all types of companies and persons can now use and personalize these models. These models come in various sizes, with even the smallest variants suitable for mobile applications. While fine-tuning a 70-billion-parameter model may still demand substantial computational resources, costs have significantly decreased, allowing tech-enthusiasts like myself to run some of them locally.
-
-Therefore, this blog post is dedicated to people who want to use LLMs locally and usually don’t have powerful GPUs or don’t want to waste too much time in adding optimization techniques. We will cover the basic memory requirements of running an LLM locally, only mentioning the basic optimizations that can be made. Towards the end of this post, you'll find resources to explore further optimization of LLM memory usage. 
-
-**If you are lazy and don't want to read the rest, use this as a general rule of thumb:**
-
-**Inference:** Number of parameters * Precision (usually 2 or 4 Bytes)
-
-**Training:** 4 - 6 times the inference resources
-
-**Also, I started an open-source LLM System Requirements calculator for everyone who wants to contribute:**
-
-**Github:** [https://github.com/manuelescobar-dev/LLM-System-Requirements](https://github.com/manuelescobar-dev/LLM-System-Requirements)
-
-**Website:** [https://llm-system-requirements.streamlit.app](https://llm-system-requirements.streamlit.app/)
-
-***DISCLAIMER:*** This article serves as a guide for estimating memory requirements, but the exact figures depend on various factors related to your setup and frameworks. Therefore, the only real way of estimating the exact memory is trying things out.
-
-# Inference
-
-Performing inference requires resources for loading the model weights and storing the KV cache and activation memory. As we will see later, it doesn’t require gradients and optimizer states as these are only required for training.
-
-**Formula**
-
-$\text{Total Inference Memory} = \text{Model Size} + \text{KV Cache} + \text{Activations}$
+For an in-depth guide, see: [Memory Requirements for LLM Training and Inference](https://medium.com/@manuelescobar-dev/memory-requirements-for-llm-training-and-inference-97e4ab08091b).
 
 
-Comparison of approximate GPU RAM needed to load versus load and train a 1-billion-parameter model at 32-bit full precision [5].
+The Memory Requirements Calculator helps estimate the memory needed to run or train large language models (LLMs). Calculating the exact memory requirements for running an LLM can be challenging due to the significant number of frameworks, models, and optimization techniques. This tool provides essential formulas and considerations to offer accurate and practical estimates for various use cases.
 
-## Model Weights
+**If you are lazy and don't want to use the calculator, use this as a general rule of thumb:**
 
-The first and most important memory requirement is the memory needed for loading the model. This depends on the number of parameters of the model and the precision you want. A common optimization technique is called quantization. **Quantization consists of loading the model weights with a lower precision.** Although it affects performance, it’s effect is not significant and it is preferred over choosing a smaller model with a higher precision.
+- **Inference:** Number of parameters × Precision (usually 2 or 4 Bytes)
+- **Training:** 4–6 times the inference resources
 
-**Formula [1]**
+### Inference
 
-$\text{Model Size} = \text{Number of Parameters} * \text{Precision}$
+Performing inference requires resources for loading the model weights, storing the KV cache, and for the activation memory.
 
-**Precision**
+**Formula**  
 
+$$\text{Total Inference Memory} = \text{Model Size} + \text{KV Cache} + \text{Activations}$$
+
+#### Model Weights
+
+The memory required for loading the model depends on the number of parameters and precision.
+
+**Formula [[1]](https://huggingface.co/docs/transformers/model_memory_anatomy)**  
+
+$$\text{Model Size} = \text{Number of Parameters} \times \text{Precision}$$
+
+**Precision Values**  
 - **4 Bytes:** FP32 / Full-precision / float32 / 32-bit
-- **2 Bytes:** FP16 / float16 / bfloat16 / 16-bit
+- **2 Bytes:** FP16 / bfloat16 / 16-bit
 - **1 Byte:** int8 / 8-bit
 - **0.5 Bytes:** int4 / 4-bit
 
-**Some additional memory optimizations**
+#### KV Cache
 
-- Double quantization
+The decoding phase generates a single token at each time step, dependent on previous token tensors. To avoid recomputing these tensors, they are cached in the GPU memory.
 
+**Formula [[3]](https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/)**  
 
-Approximate GPU RAM needed to load a 1-billion-parameter model at 32-bit, 16-bit, and 8-bit precision [5]
+$$\text{KV Cache} = 2 \times \text{Batch Size} \times \text{Sequence Length} \times \text{Number of Layers} \times \text{Hidden Size} \times \text{Precision}$$
 
-## KV Cache
+#### Activations
 
-In transformers, the decoding phase generates a single token at each time step, dependent on previous token tensors. To avoid recomputing these tensors, they are cached in the GPU memory.
+Intermediate activation values must be stored during the forward pass of the model. These activations represent the outputs of each layer in the neural network as data propagates forward through the model. They **must be kept in FP32** to avoid numerical instability and ensure convergence.
 
-**Formula [3]**
+**Formula [[4]](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/libraries/neuronx-distributed/activation_memory_reduction.html)**  
 
-$\text{KV Cache} = 2 * \text{Batch Size} * \text{Sequence Length} * \text{Number of Layers} * \text{Hidden Size} * \text{Precision}$
+$$\text{Activation Memory} = \text{Batch Size} \times \text{Sequence Length} \times \text{Hidden Size} \times \left(34 + \frac{5 \times \text{Sequence Length} \times \text{Number of attention heads}}{\text{Hidden Size}}\right)$$
 
-**Some additional memory optimizations:**
+### Training
 
-- PagedAttention
+Training and fine-tuning require more resources than inference due to the optimizer and gradient states. For fine-tuning, Parameter Efficient Fine-Tuning (PEFT) techniques, such as Low-rank Adaptation (LoRA) and Quantized Low-rank Adaptation (QLoRA), are often employed to reduce the number of trainable parameters.
 
-## Activations
+**Formula**  
 
-Intermediate activation values must be stored during the forward pass of the model. These activations represent the outputs of each layer in the neural network as data propagates forward through the model. They **must be kept in FP32** to avoid numerical explosion and ensuring convergence.
+$$\text{Total Memory} = \text{Model Size} + \text{KV Cache} + \text{Activations} + (\text{Optimizer States} + \text{Gradients}) \times \text{Number of Trainable Parameters}$$
 
-**Formula [4]**
+#### Optimizer States
 
-$\text{Activation Memory} = \text{Batch Size} * \text{Sequence Length} * \text{Hidden Size} * (34+ \frac{5*\text{Sequence Length}*\text{Number of attention heads}}{\text{Hidden Size}})$
+Optimization algorithms require resources to store the parameters and auxiliary variables. These variables include momentum and variance used by algorithms such as Adam (2 states) or SGD (1 state). The precision and type of optimizer affect memory usage.
 
-**Some additional memory optimizations:**
-
-- PagedAttention
-- Sequence-Parallelism [4]
-- Activation Recomputation [4]
-
-# Training
-
-Training requires more resources than inference due to the optimizer and gradient states. These are required for training the model and significantly increase the memory resources needed.
-
-**Formula:**
-
-$\text{Total Memory} = \text{Model Size} + \text{KV cache} + \text{Activations} + (\text{Optimizer States} + \text{Gradients})* \text{Number of Trainable Parameters}$
-
-
-Additional RAM needed to train a model [5].
-
-## Fine-Tuning
-
-Additional memory resources are required for training due to the calculation of optimizer and gradient states. Parameter Efficient Fine-Tuning (PEFT) techniques are often employed, such as Low-rank Adaptation (LoRA) and Quantized Low-rank Adaptation (QLoRA), in order to reduce the number of trainable parameters.
-
-**Techniques** (depends on multiple parameters that will be covered in a future article)
-
-- **LoRA**
-- **QLoRA**
-
-## Optimizer States
-
-Optimization algorithms require resources to store the parameters and auxiliary variables. These variables include parameters like the momentum and variance used by optimization algorithms such as Adam (2 states) or SGD (1 state). This depends on the number of optimized states and their precision.
-
-**Formula [1]**
+**Formula [[1]](https://huggingface.co/docs/transformers/model_memory_anatomy)**
 
 - **AdamW (2 states):** 8 Bytes per parameter
 - **AdamW (bitsandbytes Quantized):** 2 Bytes per parameter
 - **SGD (1 state):** 4 Bytes per parameter
 
-**Some additional memory optimizations [2]**
+#### Gradients
 
-- Alternative optimizers (NVIDIA/apex, Adafactor, Quantized Adam, …)
-- Paged optimizers
+Gradient values are computed during the backward pass of the model. They represent the rate of change of the loss function with respect to each model parameter and are crucial for updating the parameters during optimization. As with activations, they **must be stored in FP32** for numerical stability.
 
-## Gradients
-
-Gradient values are computed during the backward pass of the model. They represent the rate of change of the loss function with respect to each model parameter and are crucial for updating the parameters during optimization. As activations, they must be **stored in FP32** to maintain numerical stability.
-
-**Formula [1]**
+**Formula [[1]](https://huggingface.co/docs/transformers/model_memory_anatomy)**  
 
 4 Bytes per parameter
 
-**Some additional memory optimizations [2]**
-
-- Gradient Accumulation
-- Gradient checkpointing
-
-# Conclusion
-
-Calculating the exact memory requirements for running an LLM can be difficult, due to the significant number of frameworks, models, and optimization techniques. Nevertheless, this guide serves as an starting point for estimating the memory resources needed to perform LLM inference and training.
-
-**This is the first article of the LLM series, so stay up to date to the new articles that are coming**
-
-**Hint:** How to deploy a LLM in your own personal computer.
-
-**Thanks for reading and remember to contribute to the LLM System Requirements Calculator!**
-
-# References
+### References  
 
 [1] [https://huggingface.co/docs/transformers/model_memory_anatomy](https://huggingface.co/docs/transformers/model_memory_anatomy)
 
@@ -173,16 +137,112 @@ Calculating the exact memory requirements for running an LLM can be difficult, d
 
 [5] [https://www.oreilly.com/library/view/generative-ai-on/9781098159214/ch04.html](https://www.oreilly.com/library/view/generative-ai-on/9781098159214/ch04.html)
 
+### Disclaimer
+The Memory Requirements Calculator is a tool for estimating memory requirements for LLMs and the only real way of estimating the exact memory is trying things out. The tool is provided as-is, without any warranties or guarantees.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Memory Requirements Calculator
+- [ ] Cost Estimation Calculator
+
+See the [open issues](https://github.com/manuelescobar-dev/LLM-Tools/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To set up and run the project locally, follow these steps:
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/manuelescobar-dev/LLM-Tools.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd LLM-Tools
+   ```
+3. Install the dependencies using Poetry:
+   ```sh
+   poetry install
+   ```
+
+### Running the Project
+
+1. Start the Streamlit app:
+   ```sh
+   streamlit run app.py
+   ```
+2. Open the provided URL in your browser to view the application.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Top contributors:
+
+<a href="https://github.com/manuelescobar-dev/LLM-Tools/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=manuelescobar-dev/LLM-Tools" alt="contrib.rocks image" />
+</a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+
+**Github:** [@manuelescobar-dev](https://github.com/manuelescobar-dev)
+
+**Medium:** [@manuelescobar-dev](https://medium.com/@manuelescobar-dev)
+
+**Email:** manuelescobar.dev@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+Use this space to list any other cool resources for LLM Developers.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
-[contributors-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
-[forks-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/network/members
-[stars-shield]: https://img.shields.io/github/stars/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
-[stars-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/stargazers
-[issues-shield]: https://img.shields.io/github/issues/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
-[issues-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/issues
-[license-shield]: https://img.shields.io/github/license/manuelescobar-dev/LLM-System-Requirements.svg?style=for-the-badge
-[license-url]: https://github.com/manuelescobar-dev/LLM-System-Requirements/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/manuelescobar-dev/LLM-Tools.svg?style=for-the-badge
+[contributors-url]: https://github.com/manuelescobar-dev/LLM-Tools/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/manuelescobar-dev/LLM-Tools.svg?style=for-the-badge
+[forks-url]: https://github.com/manuelescobar-dev/LLM-Tools/network/members
+[stars-shield]: https://img.shields.io/github/stars/manuelescobar-dev/LLM-Tools.svg?style=for-the-badge
+[stars-url]: https://github.com/manuelescobar-dev/LLM-Tools/stargazers
+[issues-shield]: https://img.shields.io/github/issues/manuelescobar-dev/LLM-Tools.svg?style=for-the-badge
+[issues-url]: https://github.com/manuelescobar-dev/LLM-Tools/issues
+[license-shield]: https://img.shields.io/github/license/manuelescobar-dev/LLM-Tools.svg?style=for-the-badge
+[license-url]: https://github.com/manuelescobar-dev/LLM-Tools/blob/main/LICENSE
+[streamlit-shield]: https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white
+[streamlit-url]: https://streamlit.io
+[app-url]: https://llm-system-requirements.streamlit.app
