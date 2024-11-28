@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "llm-tools"
+version = "0.1.0"
+description = "The LLM Tools is an open-source project designed to provide essential tools for developing and running large language models (LLMs)."
+authors = ["manuelescobar-dev <manuelescobar.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+streamlit = "^1.40.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
