@@ -36,8 +36,8 @@ PARAMETERS = {
 def load_predefined_models() -> dict:
     """Load model configurations from the 'predefined_models' folder."""
     models = {}
-    for model_file in os.listdir("models"):
+    for model_file in os.listdir(os.path.join("llm_tools", "models")):
         if model_file.endswith(".json"):
-            with open(os.path.join("models", model_file), "r") as f:
+            with open(os.path.join("llm_tools", "models", model_file), "r") as f:
                 models[model_file[:-5]] = json.load(f)
     return models
