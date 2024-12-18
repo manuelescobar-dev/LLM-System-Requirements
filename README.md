@@ -180,7 +180,7 @@ To set up and run the project locally, follow these steps:
 
 1. Start the Streamlit app:
    ```sh
-   streamlit run app.py
+   streamlit run llm_tools/Home.py
    ```
 2. Open the provided URL in your browser to view the application.
 
