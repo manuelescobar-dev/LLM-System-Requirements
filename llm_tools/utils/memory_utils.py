@@ -1,5 +1,10 @@
 import streamlit as st
-from config import DATA_TYPES, PARAMETERS, DATA_TYPE_SIZES, OPTIMIZERS
+from llm_tools.config.memory_config import (
+    DATA_TYPES,
+    PARAMETERS,
+    DATA_TYPE_SIZES,
+    OPTIMIZERS,
+)
 
 
 # ----------------- Memory Functions ----------------- #

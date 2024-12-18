@@ -1,11 +1,11 @@
 import streamlit as st
-from config import (
+from llm_tools.config.memory_config import (
     DATA_TYPES,
     PARAMETERS,
     OPTIMIZERS,
     load_predefined_models,
 )
-from utils import (
+from llm_tools.utils.memory_utils import (
     calculate_inference_memory,
     calculate_training_memory,
 )
