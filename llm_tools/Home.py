@@ -1,5 +1,6 @@
 import streamlit as st
 
+st.set_page_config(page_title="LLM Tools")
 st.title("LLM Tools")
 st.write(
     "Welcome! LLM Tools is an open-source project designed to provide essential tools for developing and running large language models (LLMs)."
