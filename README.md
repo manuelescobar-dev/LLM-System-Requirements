@@ -19,10 +19,10 @@
   <p>Useful tools for LLM development!</p>
 
   <p>
-    Available on <a href="https://llm-system-requirements.streamlit.app"><img src="https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white" alt="Streamlit"></a>
+    Available on <a href="https://llm-dev-tools.streamlit.app"><img src="https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white" alt="Streamlit"></a>
   </p>
-  <p><a href="https://llm-system-requirements.streamlit.app">
-    https://llm-system-requirements.streamlit.app</a>
+  <p><a href="https://llm-dev-tools.streamlit.app">
+    https://llm-dev-tools.streamlit.app</a>
   </p>
 </div>
 
@@ -249,4 +249,4 @@ Use this space to list any other cool resources for LLM Developers.
 [license-url]: https://github.com/manuelescobar-dev/LLM-Tools/blob/main/LICENSE
 [streamlit-shield]: https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white
 [streamlit-url]: https://streamlit.io
-[app-url]: https://llm-system-requirements.streamlit.app
+[app-url]: https://llm-dev-tools.streamlit.app
